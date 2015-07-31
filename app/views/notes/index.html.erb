@@ -1,0 +1,30 @@
+<h1>My Notes</h1>
+
+<div id="notes_container" class="hide-focus" tabindex="1">
+  <%= link_to 'Home', controller: 'welcome' %>
+
+  <ul id="list_parent">
+    <li id="1">Get groceries</li>
+    <li id="2">Find dog</li>
+  </ul>
+
+  <p>From the DB</p>
+  <ul>
+    <% @notes.each do |note| %>
+      <li><%= note.text %></li>
+    <% end %>
+  </ul>
+
+  <button id="note_btn">Add Note</button>
+  <button id="ajax_btn">Ajax</button>
+
+  <%= form_for :note, url: notes_path do |f| %>
+    <p>
+      <%= f.label :text %>
+      <%= f.text_field :text %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+</div>
